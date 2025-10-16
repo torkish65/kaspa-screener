@@ -1,0 +1,61 @@
+[
+  {
+    "symbol": "KDOG",
+    "name": "KDOG",
+    "marketCap": 17420,
+    "platform": "KSPR Launchpad",
+    "status": "graduated",
+    "isNew": false
+  },
+  {
+    "symbol": "KASPER",
+    "name": "Kasper Ghost",
+    "marketCap": 2200,
+    "platform": "KSPR Launchpad",
+    "status": "graduated",
+    "raised": 280
+  },
+  {
+    "symbol": "QUEEN",
+    "name": "The Queen",
+    "marketCap": 980,
+    "platform": "KSPR Launchpad",
+    "status": "graduated"
+  },
+  {
+    "symbol": "ZEAL",
+    "name": "Zealous Swap",
+    "marketCap": 2060,
+    "platform": "KSPR Launchpad",
+    "description": "First AMM-based DEX on Kaspa"
+  },
+  {
+    "symbol": "PUMPY",
+    "name": "PUMPY",
+    "platform": "KSPR Launchpad",
+    "description": "Pumpy is NSFW - it's so fast pumping to the Mars"
+  },
+  {
+    "symbol": "AURA",
+    "name": "Aura",
+    "platform": "KSPR Launchpad"
+  },
+  {
+    "symbol": "KDAO",
+    "name": "Kaspa DAO",
+    "platform": "KSPR Launchpad",
+    "description": "The first DAO on #Kaspa"
+  },
+  {
+    "symbol": "YIR",
+    "name": "YIR - Yello is Rubbish",
+    "platform": "KSPR Launchpad",
+    "status": "new"
+  },
+  {
+    "symbol": "SHIT",
+    "name": "shit - Shitcoin",
+    "platform": "KSPR Launchpad",
+    "status": "new"
+  }
+]
