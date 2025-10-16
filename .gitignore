@@ -1,0 +1,5 @@
+   kaspa_updater.py
+   kspr_tokens.json
+   kspr_text.txt
+   *.pyc
+   __pycache__/
