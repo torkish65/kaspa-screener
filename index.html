@@ -2960,7 +2960,25 @@
                 return [];
             }
         }
-
+        function getPriceAtTimestamp(timestamp) {
+            if (!currentKlinesData || currentKlinesData.length === 0) {
+                return 0;
+            }
+            
+            // Chercher la bougie la plus proche du timestamp
+            let closestCandle = currentKlinesData[0];
+            let minDiff = Math.abs(currentKlinesData[0].time - timestamp);
+            
+            for (const candle of currentKlinesData) {
+                const diff = Math.abs(candle.time - timestamp);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closestCandle = candle;
+                }
+            }
+            
+            return closestCandle.close;
+        }
         async function loadRealTransactions(token) {
             const tbody = document.getElementById('transactionsBody');
             if (!tbody) return;
@@ -2976,6 +2994,11 @@
 
             let html = '';
             for (const tx of transactions) {
+                // Calculer la valeur USD
+                const priceAtTime = getPriceAtTimestamp(tx.blockTimestamp / 1000); // Diviser par 1000 car blockTimestamp est en ms
+                const usdValue = parseFloat(tx.amount) * priceAtTime;
+                const usdFormatted = usdValue > 0 ? `$${usdValue.toFixed(2)}` : '--';
+
                 html += `
                     <tr>
                         <td class="tx-time">${tx.timeAgo}</td>
@@ -2983,6 +3006,7 @@
                         <td><span class="tx-hash">${tx.from.slice(0, 10)}...${tx.from.slice(-6)}</span></td>
                         <td><span class="tx-hash">${tx.to.slice(0, 10)}...${tx.to.slice(-6)}</span></td>
                         <td>${tx.amount}</td>
+                        <td style="color: var(--accent-primary); font-weight: 700;">${usdFormatted}</td>
                         <td>${tx.blockNumber}</td>
                         <td><a href="https://explorer.kasplex.org/tx/${tx.txHash}" target="_blank" class="tx-hash">${tx.txHash.slice(0, 10)}...</a></td>
                     </tr>
@@ -3457,6 +3481,7 @@
         let currentChart = null;
         let currentCandleSeries = null;
         let currentTokenForTransactions = null;
+        let currentKlinesData = []; // ← AJOUTE CETTE LIGNE
         
         
         function openChartModal(token) {
@@ -3625,6 +3650,8 @@
                 
                 if (chartData.priceData.length > 0) {
                     candleSeries.setData(chartData.priceData);
+                    // Sauvegarder les klines pour calculer les prix USD des transactions
+                    currentKlinesData = chartData.priceData;
 
                     chart.timeScale().fitContent();
                     // Add chart header info
@@ -4087,6 +4114,7 @@
                                     <th>From</th>
                                     <th>To</th>
                                     <th>Amount</th>
+                                    <th>USD Value</th>
                                     <th>Block</th>
                                     <th>Txn</th>
                                 </tr>
