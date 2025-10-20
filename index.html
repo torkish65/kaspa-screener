@@ -4150,36 +4150,99 @@
                 </div>
                 
                 <!-- Sidebar -->
+                <!-- Sidebar DexScreener Style -->
                 <div class="modal-sidebar">
-                    <!-- Boutons Watchlist & Alerts -->
-                    <div class="modal-watch-alerts">
-                        <button class="watch-alert-btn" onclick="addToWatchlist(event)">
-                            ⭐ Watchlist
+                    <!-- Boutons Actions en haut -->
+                    <div class="sidebar-actions">
+                        <button class="action-btn watchlist-btn" onclick="addToWatchlist(event)">
+                            <span>⭐</span>
+                            <span>Watchlist</span>
                         </button>
-                        <button class="watch-alert-btn" onclick="setAlert(event)">
-                            🔔 Alerts
+                        <button class="action-btn alerts-btn" onclick="setAlert(event)">
+                            <span>🔔</span>
+                            <span>Alerts</span>
                         </button>
                     </div>
 
                     <!-- Boutons Sociaux -->
-                    <div class="modal-social-buttons" id="modalSocialButtons">
+                    <div class="sidebar-social" id="modalSocialButtons">
                         <!-- Rempli dynamiquement -->
                     </div>
 
                     <!-- Pair Info -->
-                    <div class="modal-pair-info">
-                        <div class="pair-info-row">
-                            <span class="pair-info-label">Pair created</span>
-                            <span class="pair-info-value" id="modalPairCreated">--</span>
+                    <div class="sidebar-section">
+                        <div class="section-row">
+                            <span class="section-label-small">PAIR CREATED</span>
+                            <span class="section-value-small" id="modalPairCreated">--</span>
                         </div>
-                        <div class="pair-info-row">
-                            <span class="pair-info-label">Token Address</span>
-                            <span class="pair-info-value">
-                                <span id="modalTokenAddress" style="font-size: 10px; font-family: monospace;" data-full-address="">--</span>
-                                <button class="copy-address-btn" onclick="copyModalAddress(event, 'token')">📋</button>
-                            </span>
+                        <div class="section-row">
+                            <span class="section-label-small">TOKEN ADDRESS</span>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="section-value-small" style="font-family: monospace; font-size: 10px;" id="modalTokenAddress" data-full-address="">--</span>
+                                <button class="copy-btn-mini" onclick="copyModalAddress(event, 'token')">📋</button>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Price & Change Grid -->
+                    <div class="stats-grid-2x2">
+                        <div class="stat-card">
+                            <span class="stat-card-label">PRICE USD</span>
+                            <span class="stat-card-value" id="modalPrice">--</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-card-label">24H CHANGE</span>
+                            <span class="stat-card-value" id="modalChange">--</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-card-label">LIQUIDITY</span>
+                            <span class="stat-card-value" id="modalLiquidity">--</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-card-label">MKT CAP</span>
+                            <span class="stat-card-value" id="modalMarketCap">--</span>
+                        </div>
+                    </div>
+
+                    <!-- Volume -->
+                    <div class="sidebar-section">
+                        <div class="section-header-mini">VOLUME</div>
+                        <div class="section-row">
+                            <span class="section-label-small">24H VOLUME</span>
+                            <span class="section-value-small" id="modalVolume">--</span>
+                        </div>
+                    </div>
+
+                    <!-- Transactions Grid -->
+                    <div class="stats-grid-2x2">
+                        <div class="stat-card">
+                            <span class="stat-card-label">TXNS</span>
+                            <span class="stat-card-value" id="modalTxns">--</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-card-label">BUYS</span>
+                            <span class="stat-card-value positive" id="modalBuys">--</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-card-label">SELLS</span>
+                            <span class="stat-card-value negative" id="modalSells">--</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-card-label">MAKERS</span>
+                            <span class="stat-card-value" id="modalMakers">--</span>
+                        </div>
+                    </div>
+
+                    <!-- Trade Button -->
+                    <div class="sidebar-trade">
+                        <a id="modalTradeBtn" href="#" target="_blank" class="trade-btn-large">
+                            ⚡ Trade on KSPR
+                        </a>
+                        <a id="modalChartBtn" href="#" target="_blank" class="chart-btn-large">
+                            📊 Open Full Chart
+                        </a>
+                    </div>
+                </div>
 
                     <!-- Stats Card -->
                     <div class="modal-stats-card">
